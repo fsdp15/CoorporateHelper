@@ -6,12 +6,14 @@ let principalName;
 $(document).ready(function () {
     microsoftTeams.app.initialize();
 
-   // microsoftTeams.app.getContext().then((context) => {
-     //   if (context.tabId == "vacation") {
+    microsoftTeams.app.getContext().then((context) => {
+        if (context.tabId == "vacation") {
+            document.getElementById('datePicker').valueAsDate = new Date();
             $("iddate1").min = new Date().toLocaleDateString('fr-ca');
             $("iddate2").min = new Date().toLocaleDateString('fr-ca');
-     //   }
-//    });
+        }
+        
+    });
 
     getClientSideToken()
         .then((clientSideToken) => {
