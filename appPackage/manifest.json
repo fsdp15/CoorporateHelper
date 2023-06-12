@@ -1,0 +1,54 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.12/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.12",
+  "version": "1.0.0",
+  "id": "d12570a0-4957-42c7-afdb-12123f0a71f3",
+  "packageName": "com.felipedotti.coorporatehelper",
+  "developer": {
+    "name": "Felipe Dotti",
+    "websiteUrl": "https://www.microsoft.com",
+    "privacyUrl": "https://www.microsoft.com/privacy",
+    "termsOfUseUrl": "https://www.microsoft.com/termsofuse"
+  },
+  "name": {
+    "short": "Coorporate Helper",
+    "full": "Coorporate Helper"
+  },
+  "description": {
+    "short": "Coorporate Helper",
+    "full": "Coorporate Helper"
+  },
+  "icons": {
+    "outline": "outline.png",
+    "color": "color.png"
+  },
+  "accentColor": "#60A18E",
+  "staticTabs": [
+    {
+      "entityId": "home",
+      "name": "Home",
+      "contentUrl": "https://e42e-185-128-9-44.ngrok-free.app/Home/Index",
+      "scopes": [ "personal" ]
+    },
+    {
+      "entityId": "expense",
+      "name": "Expenses",
+      "contentUrl": "https://e42e-185-128-9-44.ngrok-free.app/expense/expenses",
+      "scopes": [ "personal" ]
+    },
+    {
+      "entityId": "vacation",
+      "name": "Vacations",
+      "contentUrl": "https://e42e-185-128-9-44.ngrok-free.app/expense/vacations",
+      "scopes": [ "personal" ]
+    }
+  ],
+  "permissions": [ "identity", "messageTeamMembers" ],
+  "validDomains": [
+    "*.ngrok.io"
+  ],
+  "webApplicationInfo": {
+    "id": "d12570a0-4957-42c7-afdb-12123f0a71f3",
+    "resource": "api://e42e-185-128-9-44.ngrok-free.app/d12570a0-4957-42c7-afdb-12123f0a71f3"
+  }
+}
