@@ -2,16 +2,19 @@
 let managerName;
 let managerEmail;
 let principalName;
+let displayName;
 
 $(document).ready(function () {
     microsoftTeams.app.initialize();
 
-   // microsoftTeams.app.getContext().then((context) => {
-     //   if (context.tabId == "vacation") {
+    microsoftTeams.app.getContext().then((context) => {
+        if (context.tabId == "vacation") {
+            document.getElementById('datePicker').valueAsDate = new Date();
             $("iddate1").min = new Date().toLocaleDateString('fr-ca');
             $("iddate2").min = new Date().toLocaleDateString('fr-ca');
-     //   }
-//    });
+        }
+        
+    });
 
     getClientSideToken()
         .then((clientSideToken) => {
@@ -134,6 +137,7 @@ function getUserInfo(principalName) {
                 profileDiv.empty();
                 for (let key in profile) {
                     if (key == "displayName") {
+                        displayName = profile[key];
                         $("<div>")
                             .append($("<b>").text("Your name is: "))
                             .append($("<span>").text(profile[key]))
@@ -247,5 +251,109 @@ function submitExpense() {
 }
 
 function submitVacation() {
+
+    let graphMailBoxSettingsUrl = "https://graph.microsoft.com/v1.0/me/mailboxSettings";
+
+    $.ajax({
+        url: graphEmailUrl,
+        type: "PATCH",
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", `Bearer ${accessToken}`);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Accept", "*");
+            xhr.setRequestHeader("Accept-Language", "*");
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+        },
+        data:
+            JSON.stringify(
+                {
+                    "externalAudience": "all",
+                    "externalReplyMessage": "I will be OOF from " + $("iddate1").val() + " until " + $("iddate2").val(),
+                    "internalReplyMessage": "I will be OOF from " + $("iddate1").val() + " until " + $("iddate2").val(),
+                    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#Me/mailboxSettings",
+                    "automaticRepliesSetting": {
+                        "status": "Scheduled",
+                        "scheduledStartDateTime": {
+                            "dateTime": $("iddate1").val(),
+                            "timeZone": "UTC"
+                        },
+                        "scheduledEndDateTime": {
+                            "dateTime": $("iddate2").val(),
+                            "timeZone": "UTC"
+                        }
+                    }
+                }),
+        success: function (xhr, status, error) {
+
+            let getCalendarURL = "https://graph.microsoft.com/v1.0/me/calendar";
+            $.ajax({
+                url: getCalendarURL,
+                type: "GET",
+                beforeSend: function (request) {
+                    request.setRequestHeader("Authorization", `Bearer ${accessToken}`);
+                },
+                success: function (calendarDetails) {
+                    let blockCalendarURL = "https://graph.microsoft.com/v1.0/me/calendars/" + calendarDetails["id"] + "/events";
+
+                    $.ajax({
+                        url: blockCalendarURL,
+                        type: "POST",
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader("Authorization", `Bearer ${accessToken}`);
+                            xhr.setRequestHeader("Content-Type", "application/json");
+                            xhr.setRequestHeader("Accept", "*");
+                            xhr.setRequestHeader("Accept-Language", "*");
+                            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+                        },
+                        data:
+                            JSON.stringify({
+                                "subject": "OOF",
+                                "body": {
+                                    "contentType": "HTML",
+                                    "content": "OOF"
+                                },
+                                "start": {
+                                    "dateTime": $("iddate1").val(),
+                                    "timeZone": "Pacific Standard Time"
+                                },
+                                "end": {
+                                    "dateTime": $("iddate2").val(),
+                                    "timeZone": "Pacific Standard Time"
+                                },
+                                "location": {
+                                    "displayName": "N/A"
+                                },
+                                "attendees": [
+                                    {
+                                        "emailAddress": {
+                                            "address": principalName,
+                                            "name": displayName
+                                        },
+                                        "type": "required"
+                                    }
+                                ]
+                            }),
+                        success: function (xhr, status, error) {
+                            $("#successFormVacation").show();
+                        },
+
+                        error: function (xhr, status, error) {
+                            $("#errorFormVacation").show();
+                        },
+
+                    });
+                },
+                error: function () {
+                    $("#errorFormVacation").show();
+                }
+
+            })
+        },
+
+        error: function (xhr, status, error) {
+            $("#errorFormVacation").show();
+        }
+
+    })
 
 }
