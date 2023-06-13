@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.12/MicrosoftTeams.schema.json",
   "manifestVersion": "1.12",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "id": "d12570a0-4957-42c7-afdb-12123f0a71f3",
   "packageName": "com.felipedotti.coorporatehelper",
   "developer": {
@@ -27,19 +27,19 @@
     {
       "entityId": "home",
       "name": "Home",
-      "contentUrl": "https://e42e-185-128-9-44.ngrok-free.app/Home/Index",
+      "contentUrl": "https://04f7-185-128-9-182.ngrok-free.app/Home/Index",
       "scopes": [ "personal" ]
     },
     {
       "entityId": "expense",
       "name": "Expenses",
-      "contentUrl": "https://e42e-185-128-9-44.ngrok-free.app/expense/expenses",
+      "contentUrl": "https://04f7-185-128-9-182.ngrok-free.app/expense/expenses",
       "scopes": [ "personal" ]
     },
     {
       "entityId": "vacation",
       "name": "Vacations",
-      "contentUrl": "https://e42e-185-128-9-44.ngrok-free.app/expense/vacations",
+      "contentUrl": "https://04f7-185-128-9-182.ngrok-free.app/vacation/vacations",
       "scopes": [ "personal" ]
     }
   ],
@@ -49,6 +49,6 @@
   ],
   "webApplicationInfo": {
     "id": "d12570a0-4957-42c7-afdb-12123f0a71f3",
-    "resource": "api://e42e-185-128-9-44.ngrok-free.app/d12570a0-4957-42c7-afdb-12123f0a71f3"
+    "resource": "api://04f7-185-128-9-182.ngrok-free.app/d12570a0-4957-42c7-afdb-12123f0a71f3"
   }
 }

@@ -7,14 +7,16 @@ let displayName;
 $(document).ready(function () {
     microsoftTeams.app.initialize();
 
-    microsoftTeams.app.getContext().then((context) => {
+ /*  microsoftTeams.app.getContext().then((context) => {
         if (context.tabId == "vacation") {
+            console.log("sdjuhds");
             document.getElementById('datePicker').valueAsDate = new Date();
             $("iddate1").min = new Date().toLocaleDateString('fr-ca');
             $("iddate2").min = new Date().toLocaleDateString('fr-ca');
+            console.log("eeee");
         }
         
-    });
+    }); */
 
     getClientSideToken()
         .then((clientSideToken) => {
@@ -201,7 +203,7 @@ function getUserInfo(principalName) {
 }
 
 function submitExpense() {
-
+    console.log("submitExpense");
 
             let graphEmailUrl = "https://graph.microsoft.com/v1.0/me/sendMail";
 
@@ -211,9 +213,9 @@ function submitExpense() {
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader("Authorization", `Bearer ${accessToken}`);
                     xhr.setRequestHeader("Content-Type", "application/json");
-                    xhr.setRequestHeader("Accept", "*");
-                    xhr.setRequestHeader("Accept-Language", "*");
-                    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+                    xhr.setRequestHeader("Accept", "*/*");
+                    xhr.setRequestHeader("Accept-Language", "*/*");
+                    xhr.setRequestHeader("Access-Control-Allow-Origin", "*/*");
                 },
                 data: 
                 JSON.stringify({
@@ -253,39 +255,38 @@ function submitExpense() {
 function submitVacation() {
 
     let graphMailBoxSettingsUrl = "https://graph.microsoft.com/v1.0/me/mailboxSettings";
-
+    console.log("a");
     $.ajax({
-        url: graphEmailUrl,
+        url: graphMailBoxSettingsUrl,
         type: "PATCH",
         beforeSend: function (xhr) {
             xhr.setRequestHeader("Authorization", `Bearer ${accessToken}`);
             xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.setRequestHeader("Accept", "*");
-            xhr.setRequestHeader("Accept-Language", "*");
-            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+            xhr.setRequestHeader("Accept", "*/*");
+            xhr.setRequestHeader("Accept-Language", "*/*");
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "*/*");
         },
         data:
             JSON.stringify(
                 {
-                    "externalAudience": "all",
-                    "externalReplyMessage": "I will be OOF from " + $("iddate1").val() + " until " + $("iddate2").val(),
-                    "internalReplyMessage": "I will be OOF from " + $("iddate1").val() + " until " + $("iddate2").val(),
                     "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#Me/mailboxSettings",
                     "automaticRepliesSetting": {
+                        "externalAudience": "all",
+                        "externalReplyMessage": "I will be OOF from undefined until undefined",
+                        "internalReplyMessage": "I will be OOF from undefined until undefined",
                         "status": "Scheduled",
                         "scheduledStartDateTime": {
-                            "dateTime": $("iddate1").val(),
                             "timeZone": "UTC"
                         },
                         "scheduledEndDateTime": {
-                            "dateTime": $("iddate2").val(),
                             "timeZone": "UTC"
                         }
                     }
                 }),
         success: function (xhr, status, error) {
-
+            console.log("bb");
             let getCalendarURL = "https://graph.microsoft.com/v1.0/me/calendar";
+            console.log("cc");
             $.ajax({
                 url: getCalendarURL,
                 type: "GET",
@@ -293,6 +294,7 @@ function submitVacation() {
                     request.setRequestHeader("Authorization", `Bearer ${accessToken}`);
                 },
                 success: function (calendarDetails) {
+                    console.log("ddd");
                     let blockCalendarURL = "https://graph.microsoft.com/v1.0/me/calendars/" + calendarDetails["id"] + "/events";
 
                     $.ajax({
@@ -301,9 +303,9 @@ function submitVacation() {
                         beforeSend: function (xhr) {
                             xhr.setRequestHeader("Authorization", `Bearer ${accessToken}`);
                             xhr.setRequestHeader("Content-Type", "application/json");
-                            xhr.setRequestHeader("Accept", "*");
-                            xhr.setRequestHeader("Accept-Language", "*");
-                            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+                            xhr.setRequestHeader("Accept", "*/*");
+                            xhr.setRequestHeader("Accept-Language", "*/*");
+                            xhr.setRequestHeader("Access-Control-Allow-Origin", "*/*");
                         },
                         data:
                             JSON.stringify({
@@ -313,11 +315,11 @@ function submitVacation() {
                                     "content": "OOF"
                                 },
                                 "start": {
-                                    "dateTime": $("iddate1").val(),
+                                    "dateTime": $("iddate1").value(),
                                     "timeZone": "Pacific Standard Time"
                                 },
                                 "end": {
-                                    "dateTime": $("iddate2").val(),
+                                    "dateTime": $("iddate2").value(),
                                     "timeZone": "Pacific Standard Time"
                                 },
                                 "location": {
@@ -334,6 +336,7 @@ function submitVacation() {
                                 ]
                             }),
                         success: function (xhr, status, error) {
+                            console.log("beee");
                             $("#successFormVacation").show();
                         },
 
