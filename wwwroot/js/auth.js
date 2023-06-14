@@ -6,17 +6,14 @@ let displayName;
 
 $(document).ready(function () {
     microsoftTeams.app.initialize();
-
- /*  microsoftTeams.app.getContext().then((context) => {
-        if (context.tabId == "vacation") {
-            console.log("sdjuhds");
-            document.getElementById('datePicker').valueAsDate = new Date();
-            $("iddate1").min = new Date().toLocaleDateString('fr-ca');
-            $("iddate2").min = new Date().toLocaleDateString('fr-ca');
-            console.log("eeee");
+    microsoftTeams.app.getContext().then((context) => {
+       if (context.page.id == "vacation") {
+           aaa = new Date().toISOString().split("T")[0];
+           $("#iddate1").min = new Date().toISOString().split("T")[0];
+           $("#iddate2").min = new Date().toISOString().split("T")[0];
         }
         
-    }); */
+    });
 
     getClientSideToken()
         .then((clientSideToken) => {
@@ -24,7 +21,6 @@ $(document).ready(function () {
 
         })
         .catch((error) => {
-            console.log(error);
             if (error === "invalid_grant") {
                 // Display in-line button so user can consent
                 $("#divError").text("Error while exchanging for Server token - invalid_grant - User or admin consent is required.");
@@ -32,7 +28,6 @@ $(document).ready(function () {
                 $("#consent").show();
             } else {
                 // Something else went wrong
-                console.log(error);
             }
         });
 
@@ -203,7 +198,6 @@ function getUserInfo(principalName) {
 }
 
 function submitExpense() {
-    console.log("submitExpense");
 
             let graphEmailUrl = "https://graph.microsoft.com/v1.0/me/sendMail";
 
@@ -255,7 +249,6 @@ function submitExpense() {
 function submitVacation() {
 
     let graphMailBoxSettingsUrl = "https://graph.microsoft.com/v1.0/me/mailboxSettings";
-    console.log("a");
     $.ajax({
         url: graphMailBoxSettingsUrl,
         type: "PATCH",
@@ -272,21 +265,21 @@ function submitVacation() {
                     "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#Me/mailboxSettings",
                     "automaticRepliesSetting": {
                         "externalAudience": "all",
-                        "externalReplyMessage": "I will be OOF from undefined until undefined",
-                        "internalReplyMessage": "I will be OOF from undefined until undefined",
+                        "externalReplyMessage": "I will be OOF from " + $("#iddate1").val() + " until " + $("#iddate2").val(),
+                        "internalReplyMessage": "I will be OOF from " + $("#iddate1").val() + " until " + $("#iddate2").val(),
                         "status": "Scheduled",
                         "scheduledStartDateTime": {
+                            "dateTime": $("#iddate1").val(),
                             "timeZone": "UTC"
                         },
                         "scheduledEndDateTime": {
+                            "dateTime": $("#iddate2").val(),
                             "timeZone": "UTC"
                         }
                     }
                 }),
         success: function (xhr, status, error) {
-            console.log("bb");
             let getCalendarURL = "https://graph.microsoft.com/v1.0/me/calendar";
-            console.log("cc");
             $.ajax({
                 url: getCalendarURL,
                 type: "GET",
@@ -294,7 +287,7 @@ function submitVacation() {
                     request.setRequestHeader("Authorization", `Bearer ${accessToken}`);
                 },
                 success: function (calendarDetails) {
-                    console.log("ddd");
+                    var date = new Date($("#iddate1").val());
                     let blockCalendarURL = "https://graph.microsoft.com/v1.0/me/calendars/" + calendarDetails["id"] + "/events";
 
                     $.ajax({
@@ -315,11 +308,11 @@ function submitVacation() {
                                     "content": "OOF"
                                 },
                                 "start": {
-                                    "dateTime": $("iddate1").value(),
+                                    "dateTime": $("#iddate1").val(),
                                     "timeZone": "Pacific Standard Time"
                                 },
                                 "end": {
-                                    "dateTime": $("iddate2").value(),
+                                    "dateTime": $("#iddate2").val(),
                                     "timeZone": "Pacific Standard Time"
                                 },
                                 "location": {
@@ -336,7 +329,6 @@ function submitVacation() {
                                 ]
                             }),
                         success: function (xhr, status, error) {
-                            console.log("beee");
                             $("#successFormVacation").show();
                         },
 
