@@ -21,4 +21,5 @@ your vacation period. It also blocks our calendar for that period with an OOF ev
 There is a README.docx file in the repository showcasing how to install the app.
 
 Here is a video demonstrating the app: https://youtu.be/Wfe1po4w8x8
+
 Mirror: https://1drv.ms/u/s!AhbdjVk58i1ah_EFwhWLfr3r3EHASw?e=0CRCra
