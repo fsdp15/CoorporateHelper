@@ -12,7 +12,9 @@ So all credits for the template code that gets reutilized here goes to Microsoft
 The App uses Single-Sign-On and contains three tabs:
 
 Home: home page of the app. Displays information about the currently signed-in used using Graph.
+
 Expenses: used to submit expenses to undergo to approval for your manager. You select the date, the value of the expense and then an e-mail is sent to you and to your manager, containing the expense.
+
 Vacation: used to submit your vacation. You select the date for your vacation, and after submitting it, it automatically turns on the Automatic Replies in your Outlook with a predefined message containing
 your vacation period. It also blocks our calendar for that period with an OOF event.
 
