@@ -7,7 +7,7 @@ This is an app to be used inside Microsoft Teams, made for the HackTogether: The
 
 The template for this App was the SSO Sample from the Microsoft Community: https://github.com/OfficeDev/Microsoft-Teams-Samples/blob/main/samples/tab-personal-sso-quickstart/csharp_dotnetcore/README.md
 
-So all credits for the template code that gets reutilized here goes to Microsoft, including most of the install instructions.
+So all credits for the template code that gets reutilized here goes to Microsoft, including the install instructions which are the same.
 
 The App uses Single-Sign-On and contains three tabs:
 
