@@ -1,4 +1,4 @@
-# Coorporate Helper
+# Corporate Helper
 A Microsoft Teams App for checking your data, submitting expenses and submitting your vacation.
 
 Hi!
