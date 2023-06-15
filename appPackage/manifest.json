@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.12/MicrosoftTeams.schema.json",
   "manifestVersion": "1.12",
   "version": "1.0.5",
-  "id": "d12570a0-4957-42c7-afdb-12123f0a71f3",
+  "id": "<<YOUR-MICROSOFT-APP-ID>>",
   "packageName": "com.felipedotti.coorporatehelper",
   "developer": {
     "name": "Felipe Dotti",
@@ -27,19 +27,19 @@
     {
       "entityId": "home",
       "name": "Home",
-      "contentUrl": "https://274e-2001-818-ea0a-1000-b9a2-8d7d-ef0d-325b.ngrok-free.app/Home/Index",
+      "contentUrl": "https://{{domain-name}}/Home/Index",
       "scopes": [ "personal" ]
     },
     {
       "entityId": "expense",
       "name": "Expenses",
-      "contentUrl": "https://274e-2001-818-ea0a-1000-b9a2-8d7d-ef0d-325b.ngrok-free.app/expense/expenses",
+      "contentUrl": "https://{{domain-name}}/expense/expenses",
       "scopes": [ "personal" ]
     },
     {
       "entityId": "vacation",
       "name": "Vacations",
-      "contentUrl": "https://274e-2001-818-ea0a-1000-b9a2-8d7d-ef0d-325b.ngrok-free.app/vacation/vacations",
+      "contentUrl": "https://{{domain-name}}/vacation/vacations",
       "scopes": [ "personal" ]
     }
   ],
@@ -48,7 +48,7 @@
     "*.ngrok.io"
   ],
   "webApplicationInfo": {
-    "id": "d12570a0-4957-42c7-afdb-12123f0a71f3",
-    "resource": "api://1fda-185-128-9-180.ngrok-free.app/d12570a0-4957-42c7-afdb-12123f0a71f3"
+    "id": "<<YOUR-MICROSOFT-APP-ID>>",
+    "resource": "api://{{domain-name}}/<<YOUR-MICROSOFT-APP-ID>>"
   }
 }
