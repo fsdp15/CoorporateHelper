@@ -94,8 +94,9 @@ Version|Date|Author|Comments
     * `0ec893e0-5785-4de6-99da-4ed124e5296c` (Office desktop)
     * `bc59ab01-8403-45c6-8796-ac3ef710b3e3` (Outlook web)
     * `d3590ed6-52b3-4102-aeff-aad2292ab01c` (Outlook desktop)
+
   - Navigate to **API Permissions**, and make sure to add the follow permissions:
-    -   Select Add a permission
+    -   Select Add a permission.
     -   Select Microsoft Graph -\> Delegated permissions.
       * User.Read (enabled by default)    
       * Calendars.ReadWrite  
@@ -103,7 +104,7 @@ Version|Date|Author|Comments
       * MailboxSettings.ReadWrite  
     - Click on Add permissions. Please make sure to grant the admin consent for the required permissions.
 
-    - Navigate to **Authentication**
+  - Navigate to **Authentication**.
     - If an app hasn't been granted IT admin consent, users will have to provide consent the first time they use an app.
     - Set a redirect URI:
       * Select **Add a platform**.
@@ -138,12 +139,13 @@ Version|Date|Author|Comments
 
 4. Setup Manifest for Teams
 - __*This step is specific to Teams.*__
+
      **Edit** the `manifest.json` contained in the ./Manifest folder to replace your Microsoft App Id (that was created when you registered your app registration earlier) *everywhere* you see the place holder string `<<YOUR-MICROSOFT-APP-ID>>` (depending on the scenario the Microsoft App Id may occur multiple times in the `manifest.json`)
 
      **Edit** the `manifest.json` for `validDomains` and replace `{{domain-name}}` with base Url of your domain. E.g. if you are using ngrok it would be `https://1234.ngrok-free.app` then your domain-name will be `1234.ngrok-free.app`.
 
      **Edit** the `manifest.json` for `webApplicationInfo` resource `"api://{{domain-name}}/<<YOUR-MICROSOFT-APP-ID>>"` with MicrosoftAppId. E.g. `"api://1234.ngrok-free.app/00000000-0000-0000-0000-000000000000"`.
-     
+
      **Zip** up the contents of the Manifest folder to create a Manifest.zip file (Make sure that zip file does not contains any subfolder otherwise you will get error while uploading your .zip package).
 
 - Upload the manifest.zip to Teams (in the Apps view click "Upload a custom app")
