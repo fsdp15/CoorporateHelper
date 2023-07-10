@@ -12,13 +12,16 @@ This App uses Single-Sign-On and contains three tabs:
 
 Home: home page of the app. Displays information about the currently signed-in user using the Graph API.
 
-Expenses: used to submit expenses to undergo to approval for your manager. You select the date, the value of the expense and then an e-mail is sent to you and to your manager,containing the expense.
+Expenses: used to submit expenses to undergo to approval for your manager. You select the date, the value of the expense and then an e-mail is sent to you and to your manager,       containing the expense.
 
 Vacation: used to submit your vacation. You select the date for your vacation, and after submitting it, it automatically turns on the Automatic Replies in your Outlook with a predefined message containing your vacation period. It also blocks your calendar for that period with an OOF event.
 
-Here is a video demonstrating the app: https://1drv.ms/u/s!AhbdjVk58i1ah_EFwhWLfr3r3EHASw?e=0CRCra.
-
 ![Tab Personal SSO QuickstartGif](assets/demo.gif)  
+
+## Included Features
+* Teams SSO (tabs).
+* MSAL.js 2.0 support.
+* Graph API.
 
 ## Frameworks
 
@@ -51,27 +54,6 @@ Version|Date|Author|Comments
 
 ---
 
-## Included Features
-* Teams SSO (tabs)
-* MSAL.js 2.0 support
-* Graph API
-
-## Interaction with app
-
-![Tab Personal SSO QuickstartGif](Images/TabPersonalSSOQuickstartGif.gif)  
- 
-## Prerequisites
-
-- [.NET Core SDK](https://dotnet.microsoft.com/download) version 6.0
-
-  determine dotnet version
-  ```bash
-  dotnet --version
-  ```
-- [Ngrok](https://ngrok.com/download) (For local environment testing) Latest (any other tunneling software can also be used)
-  
-- [Teams](https://teams.microsoft.com) Microsoft Teams is installed and you have an account
-    
 ## Setup
 
 ### Register your Teams Auth SSO with Azure AD
@@ -166,7 +148,7 @@ Version|Date|Author|Comments
    - Go to your project directory, the ./Manifest folder, select the zip folder, and choose Open.
    - Select Add in the pop-up dialog box. Your app is uploaded to Teams.
 
-1) Run your app, either from Visual Studio with `F5` or using `dotnet run` in the appropriate folder.
+- Run your app, either from Visual Studio with `F5` or using `dotnet run` in the appropriate folder.
 
 ## Running the sample.
 
@@ -175,7 +157,7 @@ Version|Date|Author|Comments
 ![InstallApp](assets/1.png)
 
 **App's Home Page:**
-![HomePage](Images/2.png)
+![HomePage](assets/2.png)
 
 ## Minimal Path to Awesome
 
