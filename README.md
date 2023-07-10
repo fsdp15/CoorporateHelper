@@ -32,15 +32,15 @@ Vacation: used to submit your vacation. You select the date for your vacation, a
 ## Prerequisites
 
 * [Office 365 tenant](https://learn.microsoft.com/en-us/office/developer-program/microsoft-365-developer-program-get-started)
-* [.NET Core SDK](https://dotnet.microsoft.com/download) version 6.0
+* [.NET Core SDK](https://dotnet.microsoft.com/download) version 6.0.
 
   determine dotnet version
   ```bash
   dotnet --version
   ```
 
-* [Ngrok](https://ngrok.com/download) (For local environment testing) Latest (any other tunneling software can also be used)
-* [Teams](https://teams.microsoft.com) Microsoft Teams is installed and you have an active account
+* [Ngrok](https://ngrok.com/download) (For local environment testing) Latest (any other tunneling software can also be used).
+* [Teams](https://teams.microsoft.com) Microsoft Teams is installed and you have an active account.
 
 ## Version history
 
@@ -149,8 +149,8 @@ Version|Date|Author|Comments
      **Zip** up the contents of the Manifest folder to create a Manifest.zip file (Make sure that zip file does not contains any subfolder otherwise you will get error while uploading your .zip package).
 
 - Upload the manifest.zip to Teams (in the Apps view click "Upload a custom app")
-   - Go to Microsoft Teams. From the lower left corner, select Apps
-   - From the lower left corner, choose Upload a Custom App
+   - Go to Microsoft Teams. From the lower left corner, select Apps.
+   - From the lower left corner, choose Upload a Custom App.
    - Go to your project directory, the ./Manifest folder, select the zip folder, and choose Open.
    - Select Add in the pop-up dialog box. Your app is uploaded to Teams.
 
