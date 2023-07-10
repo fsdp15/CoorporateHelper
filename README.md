@@ -16,6 +16,8 @@ Expenses: used to submit expenses to undergo to approval for your manager. You s
 
 Vacation: used to submit your vacation. You select the date for your vacation, and after submitting it, it automatically turns on the Automatic Replies in your Outlook with a predefined message containing your vacation period. It also blocks your calendar for that period with an OOF event.
 
+You can find a quick video demonstrating the app's functionalities [here](https://1drv.ms/v/s!AhbdjVk58i1aicQitnY9GZyAnxUQfQ?e=HmHnHL).
+
 ![Tab Personal SSO QuickstartGif](assets/demo.gif)  
 
 ## Included Features
