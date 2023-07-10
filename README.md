@@ -97,17 +97,18 @@ Version|Date|Author|Comments
   - Navigate to **API Permissions**, and make sure to add the follow permissions:
     -   Select Add a permission
     -   Select Microsoft Graph -\> Delegated permissions.
-    * User.Read (enabled by default)    
-    * Calendars.ReadWrite  
-    * Mail.Send
-    * MailboxSettings.ReadWrite  
+      * User.Read (enabled by default)    
+      * Calendars.ReadWrite  
+      * Mail.Send
+      * MailboxSettings.ReadWrite  
     - Click on Add permissions. Please make sure to grant the admin consent for the required permissions.
+
     - Navigate to **Authentication**
-    If an app hasn't been granted IT admin consent, users will have to provide consent the first time they use an app.
-    Set a redirect URI:
-    * Select **Add a platform**.
-    * Select **Single Page Application**.
-    * Enter the **redirect URI** for the app in the following format: `https://%ngrokDomain%.ngrok-free.app/Auth/End`.
+    - If an app hasn't been granted IT admin consent, users will have to provide consent the first time they use an app.
+    - Set a redirect URI:
+      * Select **Add a platform**.
+      * Select **Single Page Application**.
+      * Enter the **redirect URI** for the app in the following format: `https://%ngrokDomain%.ngrok-free.app/Auth/End`.
     
    - Navigate to the **Certificates & secrets**. In the Client secrets section, click on "+ New client secret". Add a description      (Name of the secret) for the secret and select “Never” for Expires. Click "Add". Once the client secret is created, copy its value, it need to be placed in the appsettings.json.
    - Ensure that you've [enabled the Teams Channel](https://learn.microsoft.com/en-us/azure/bot-service/channel-connect-teams?view=azure-bot-service-4.0)
@@ -138,8 +139,11 @@ Version|Date|Author|Comments
 4. Setup Manifest for Teams
 - __*This step is specific to Teams.*__
      **Edit** the `manifest.json` contained in the ./Manifest folder to replace your Microsoft App Id (that was created when you registered your app registration earlier) *everywhere* you see the place holder string `<<YOUR-MICROSOFT-APP-ID>>` (depending on the scenario the Microsoft App Id may occur multiple times in the `manifest.json`)
+
      **Edit** the `manifest.json` for `validDomains` and replace `{{domain-name}}` with base Url of your domain. E.g. if you are using ngrok it would be `https://1234.ngrok-free.app` then your domain-name will be `1234.ngrok-free.app`.
+
      **Edit** the `manifest.json` for `webApplicationInfo` resource `"api://{{domain-name}}/<<YOUR-MICROSOFT-APP-ID>>"` with MicrosoftAppId. E.g. `"api://1234.ngrok-free.app/00000000-0000-0000-0000-000000000000"`.
+     
      **Zip** up the contents of the Manifest folder to create a Manifest.zip file (Make sure that zip file does not contains any subfolder otherwise you will get error while uploading your .zip package).
 
 - Upload the manifest.zip to Teams (in the Apps view click "Upload a custom app")
@@ -161,8 +165,6 @@ Version|Date|Author|Comments
 
 ## Minimal Path to Awesome
 
-_Include consise instructions to set up and run the sample. These are just an example!_
-
 * Clone this repository.
 * Start ngrok (ngrok http -host-header=rewrite 3978). Note the URL and update it in the manifest.json and appsettings.json files.
 * Register an Azure AD application and enable Single-Sign-On with the ngrok URL in the Expose an API tab (Check Setup - Step 2 above).
@@ -180,7 +182,5 @@ Once the app is installed, you can navigate between 3 tabs inside it:
 * Home: show information about the currently logged-in user.
 * Expenses: submit a expense report to your manager.
 * Vacation: submit vacation requests to your manager.
-
-_Below there is a clear image used for telemetry. Please change "readme-template" to your sample name._
 
 <img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/app-coorporatehelper-tab" />
