@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using TeamsAuthSSO.Models;
 
-namespace CoorporateHelper.Controllers
+namespace CorporateHelper.Controllers
 {
 	public class VacationController : Controller
 	{

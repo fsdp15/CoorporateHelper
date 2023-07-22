@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
 
-namespace CoorporateHelper.Controllers
+namespace CorporateHelper.Controllers
 {
 
 	using System.Diagnostics;

@@ -34,12 +34,17 @@ You can find a quick video demonstrating the app's functionalities [here](assets
 ## Prerequisites
 
 * [Office 365 tenant](https://learn.microsoft.com/en-us/office/developer-program/microsoft-365-developer-program-get-started)
-* [.NET Core SDK](https://dotnet.microsoft.com/download) version 6.0.
+* [.NET Core SDK](https://dotnet.microsoft.com/en-us/download) version 7.0.
 
   determine dotnet version
   ```bash
   dotnet --version
   ```
+
+* [.NET Core 3.1.32 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-3.1.32-windows-x64-installer)
+
+Please install both .NET Core 7.0 and .NET Core 3.1.32 Runtime. 
+Only .NET Core 7.0 will not be able to run the application as there is a dependency with the 3.1.32 Runtime.
 
 * [Ngrok](https://ngrok.com/download) (For local environment testing) Latest (any other tunneling software can also be used).
 * [Teams](https://teams.microsoft.com) Microsoft Teams is installed and you have an active account.
@@ -88,7 +93,7 @@ Version|Date|Author|Comments
   - Select **Add scope**
     * The domain part of the **Scope name** displayed just below the text field should automatically match the **Application ID** URI set in the previous step, with `/access_as_user` appended to the end:
         * `api://[ngrokDomain].ngrok-free.app/00000000-0000-0000-0000-000000000000/access_as_user.
-  - In the **Authorized client applications** section, identify the applications that you want to authorize for your app’s web application. Each of the following IDs needs to be entered:
+  - In the **Authorized client applications** section, identify the applications that you want to authorize for your app’s web application. Each of the following IDs needs to be entered. Ensure you check the "Authorized scopes" check box for your new scope as you add each authorized client application, then click "Add application".
     * `1fec8e78-bce4-4aaf-ab1b-5451cc387264` (Teams mobile/desktop application)
     * `5e3ce6c0-2b1f-4285-8d4b-75ee78787346` (Teams web application)
   **Note** If you want to test or extend your Teams apps across Office and Outlook, kindly add below client application identifiers while doing Azure AD app registration in your tenant:
@@ -114,7 +119,6 @@ Version|Date|Author|Comments
       * Enter the **redirect URI** for the app in the following format: `https://%ngrokDomain%.ngrok-free.app/Auth/End`.
     
    - Navigate to the **Certificates & secrets**. In the Client secrets section, click on "+ New client secret". Add a description      (Name of the secret) for the secret and select “Never” for Expires. Click "Add". Once the client secret is created, copy its value, it need to be placed in the appsettings.json.
-   - Ensure that you've [enabled the Teams Channel](https://learn.microsoft.com/en-us/azure/bot-service/channel-connect-teams?view=azure-bot-service-4.0)
 
 
 
@@ -136,8 +140,8 @@ Version|Date|Author|Comments
    - If you are using Visual Studio
   - Launch Visual Studio
   - File -> Open -> Project/Solution
-  - Navigate to `samples/app-coorporatehelper-tab` folder
-  - Select `CoorporateHelper.csproj` file
+  - Navigate to `samples/tab-corporate-helper` folder
+  - Select `CorporateHelper.csproj` file
 
 4. Setup Manifest for Teams
 - __*This step is specific to Teams.*__
@@ -175,7 +179,7 @@ Version|Date|Author|Comments
 * Add the following Delegated Permissions for Graph to your App Registration: User.Read, Calendars.ReadWrite ,Mail.Send, MailboxSettings.ReadWrite. Grant Admin Consent to them (https://learn.microsoft.com/en-us/graph/use-postman).
 * Generate a Client Secret for your App Registration.
 * Update the appsettings.json file (Check Setup - Step 3 above).
-* In the command line, go to the project's folder (app-coorporatehelper-tab) and run:
+* In the command line, go to the project's folder (tab-corporate-helper) and run:
   * `dotnet run`
 * Update the manifest (Check Setup - Step 4 above) and upload to Teams.
 
@@ -187,4 +191,4 @@ Once the app is installed, you can navigate between 3 tabs inside it:
 * Expenses: submit a expense report to your manager.
 * Vacation: submit vacation requests to your manager.
 
-<img src="https://pnptelemetry.azurewebsites.net/sp-dev-fx-webparts/samples/app-coorporatehelper-tab" />
+<img src="https://pnptelemetry.azurewebsites.net/teams-dev-samples/samples/tab-corporate-helper" />
