@@ -69,7 +69,7 @@ Version|Date|Author|Comments
   - Run ngrok - point to port 3978
 
    ```bash
-   # ngrok http -host-header=rewrite 3978
+   # ngrok http 3978 --host-header="localhost:3978"
    ```
 
 2. Register a new application in the [Azure Active Directory – App Registrations](https://go.microsoft.com/fwlink/?linkid=2083908) portal.
