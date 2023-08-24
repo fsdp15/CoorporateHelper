@@ -186,7 +186,7 @@ Version|Date|Author|Comments
 Once the app is installed, you can navigate between 3 tabs inside it:
 
 * Home: show information about the currently logged-in user.
-* Expenses: submit a expense report to your manager.
+* Expenses: submit an expense report to your manager.
 * Vacation: submit vacation requests to your manager.
 
 <img src="https://m365-visitor-stats.azurewebsites.net/teams-dev-samples/samples/tab-corporate-helper" />
